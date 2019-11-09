@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://bullets/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://assets/Spritesheet/onlyObjects_retina_rotated.png" type="Texture" id=2]
+[ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 8.82085
+height = 9.47275
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource( 1 )
+speed = 700
+damage = 10
+lifetime = 1.0
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = -3.14159
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 388, 298, 32, 24 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 1.78735, 0.897613 )
+shape = SubResource( 1 )
+
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Explosion" parent="." instance=ExtResource( 3 )]
+visible = false
+scale = Vector2( 0.7056, 0.678461 )
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_Explosion_animation_finished"]
