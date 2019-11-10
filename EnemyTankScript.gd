@@ -36,6 +36,8 @@ func _process(delta):
 func _on_Area2D_body_shape_entered(body_id, body, body_shape, area_shape):
 	pass # Replace with function body.
 
+func spawnEnemy(_position):
+	position = _position
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":

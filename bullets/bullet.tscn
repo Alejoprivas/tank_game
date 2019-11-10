@@ -16,6 +16,7 @@ lifetime = 1.0
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -3.14159
+z_index = 1
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 388, 298, 32, 24 )
